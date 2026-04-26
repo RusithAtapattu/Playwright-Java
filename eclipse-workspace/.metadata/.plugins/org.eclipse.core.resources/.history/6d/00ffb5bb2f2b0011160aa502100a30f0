@@ -1,0 +1,27 @@
+package tests;
+
+import org.testng.annotations.Test;
+
+import base.BaseTest;
+
+public class LocatorsDemo extends BaseTest {
+
+	@Test
+	public void testAllLocators() {
+		page.navigate("https://trytestingthis.netlify.app/");
+
+		// Using ID attribute
+		page.locator("#fname").fill("Davey");
+
+		// Using name attribute
+		page.locator("input[name='lname']").fill("Jones");
+
+		// Select radio button using value, type and index
+		page.locator("input[value='male']").check();
+		page.locator("input[type='radio']").nth(1).check();
+
+		page.locator("select#option").selectOption("option 2");
+		page.pause();
+	}
+
+}

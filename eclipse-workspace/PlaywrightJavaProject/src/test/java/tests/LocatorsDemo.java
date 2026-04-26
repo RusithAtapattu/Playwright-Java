@@ -1,0 +1,41 @@
+package tests;
+
+import org.testng.annotations.Test;
+
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
+
+import base.BaseTest;
+
+public class LocatorsDemo extends BaseTest {
+
+	@Test
+	public void testAllLocators() {
+		page.navigate("https://trytestingthis.netlify.app/");
+
+		// Using ID attribute
+		page.locator("#fname").fill("Davey");
+
+		// Using name attribute
+		page.locator("input[name='lname']").fill("Jones");
+
+		// Select radio button using value, type and index
+		page.locator("input[value='male']").check();
+		page.locator("input[type='radio']").nth(1).check();
+
+		// Dropdown
+		page.locator("select#option").selectOption("Option 2");
+
+		// Checkboxes
+		page.locator("input[type='checkbox'][value='Option 3']").check();
+		page.getByLabel("Option 1").check();
+
+		// Xpath
+		page.locator("//input[@type='date']").fill("2026-04-05");
+
+		page.getByText("Click me").click();
+		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit")).click();
+		page.pause();
+	}
+
+}

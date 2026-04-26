@@ -1,0 +1,18 @@
+package tests;
+
+import org.testng.annotations.Test;
+
+import base.BaseTest;
+
+public class LocatorsDemo extends BaseTest {
+
+	@Test
+	public void testAllLocators() {
+		page.navigate("https://trytestingthis.netlify.app/");
+
+		page.locator("#fname").fill("Davey");
+		page.locator("input[name='lname']").fill("Jones");
+		page.pause();
+	}
+
+}
